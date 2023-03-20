@@ -20,6 +20,8 @@ As such, it's critical to have security strategies that minimize the risk of com
 
 [difference between authorization and authentication](https://auth0.com/intro-to-iam/authentication-vs-authorization)
 
+[when using one or another](https://auth0.com/blog/id-token-access-token-what-is-the-difference/)
+
 [we can use different protocol for each one](https://auth0.com/blog/refresh-tokens-what-are-they-and-when-to-use-them/)
 
 [id token + access token + refresh token](https://auth0.com/blog/refresh-tokens-what-are-they-and-when-to-use-them/)
