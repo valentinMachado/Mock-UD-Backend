@@ -1,3 +1,33 @@
+# UD-Backend choices
+## Introduction
+### Schema
+```mermaid
+graph TB
+    DC[Demo client] -- https request --> R[Routes]
+    R -- return resource --> DC
+    DC -- https request --> K
+    K -- return token --> DC
+
+    subgraph Authentication
+        K[Keycloak]
+    end
+
+    subgraph Ud-Backend
+        R -- if auth required --> AM[Auth middleware]
+        AM -- hasAccessToResource --> R
+        AM -- validation token introspection --> K
+        K -- validate or invalidate token --> AM
+    end
+
+    subgraph Database
+        R -- get resource --> DB[Common/Demo Database]
+        DB -- return resource --> R
+    end
+```
+
+## Node.js - Express
+
+## Keycloak middleware and JWTs
 [What is JWT secret](https://stackoverflow.com/questions/31309759/what-is-secret-key-for-jwt-based-authentication-and-how-to-generate-it)
 
 [Why JWT should have a ttl (time to live)](https://stackoverflow.com/questions/34259248/what-if-jwt-is-stolen)
@@ -48,3 +78,5 @@ Is the client absolutely trusted with user credentials? You may use the Resource
 since refresh token are enable to generate at its very important to not compromise them.
 
 [silent auth](https://auth0.com/docs/authenticate/login/configure-silent-authentication) vs refresh token rotation (if two entity ask a refresh token it broke the chain)
+
+## Database interface
